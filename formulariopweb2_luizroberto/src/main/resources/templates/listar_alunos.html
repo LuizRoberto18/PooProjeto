@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+
+        }
+        body{
+            background-color: darkgrey;
+        }
+        table{
+            background-color: white;
+        }
+    </style>
+    <title>Listar Alunos</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
+            <a class="navbar-brand" href="#" style="color: white">Campus IFAL-Rio Largo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/" style="color: white">Home <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="form"style="color: white">Formulario <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0" method="POST" action="/procurarAluno">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Procurar" name="nome" id="nome"
+                        aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+                </form>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h1>Lista de Alunos Cadastrado</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                   
+                    <th scope="col">Nome</th>
+                    <th scope="col">Email</th>
+                    
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="aluno:${alunos}">
+                    
+                    <td th:text="${pessoa.nome}"></td>
+                    <td th:text="${aluno.email}"></td>
+                    
+                    <td><a th:href="@{'/excluir_aluno/' + ${pessoa.id}}"> <button type="submit" class="btn btn-danger">Excluir</button></a></td>
+                    <td><a th:href="@{'/atualizar_aluno/' + ${pessoa.id}}"><button type="submit" class="btn btn-info">Atualizar</button></a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p th:text="${mensagem}"></p>
+    </div>
+
+</body>
+
+</html>

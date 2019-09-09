@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<meta charset ="UTF-8"/>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Jekyll v3.8.5">
+  <title>Formulario</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
+
+  <link href="bootstrapFiles/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+    
+    .msg_erro{
+      color: red;
+    }
+    
+    .labelCampo{
+      font-style: oblique !important; 
+      font-size: 110%;
+    }
+    .container{
+    border: 1px solid black;
+    align-content: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
+    background-color: darkgrey;
+    }
+    #validar{
+      background-color: green;
+    }
+  </style>
+  
+  <link href="./Checkout example · Bootstrap_files/form-validation.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
+        <a class="navbar-brand" href="#" style="color: white">Campus IFAL-Rio Largo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" style="color: white">Home <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="form"style="color: white">Formulario <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" method="POST" action="/procurarAluno">
+                <input class="form-control mr-sm-2" type="search" placeholder="Procurar" name="nome" id="nome"
+                    aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+            </form>
+        </div>
+    </nav>
+</div>
+
+
+  <div class="container">
+    <div class="py-5 text-center">
+      <h1 class="lead">Formulario de Cadastro</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 order-md-1">
+      <container class="container">
+        <form method="POST" action="/novo_cadastro">
+            <input type="number" name="id" id="id" th:value="${pessoa.id}" style="display: none">
+          <div class="row">
+            <div class="col-md-12 mb-3">
+              <label for="name" class="CampoLabel">Nome</label>
+              <input type="text" class="form-control" id="nome" placeholder="Ex. Jose Maria da Silva" name="pessoa.nome" th:value="${pessoa.nome}" style="text-transform:uppercase">
+            </div>
+              <span class="msg_erro msg_nome" style="display: none"> O Campo nome é Obrigatorio</span>
+              <span class="msg_erro msg_nome_invalido" style="display: none"> este Nome é invalido</span>
+          </div>
+          <br>
+
+        <div class="row">
+          <div class="mb-3">
+            <label for="email" class="CampoLabel">Email </label>
+            <input type="email" class="form-control" id="email" placeholder="usuario@exemplo.com" name="email" th:value="${aluno.email}">
+          </div>
+           <span class="msg_erro msg_email" style="display: none"> O Campo email é Obrigatorio</span>
+            <span class="msg_erro msg_email_invalido" style="display: none"> este Email é invalido</span>
+        </div>
+        <br>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="cpf" class="CampoLabel">CPF</label>
+              <input type="text" class="form-control" id="cpf" placeholder="" required="" name="cpf" th:value="${pessoa.cpf}">
+            </div>
+              <span class="msg_erro msg_cpf" style="display: none"> O Campo CPF Obrigatorio</span>
+              <span class="msg_erro msg_cpf_invalido" style="display: none">este CPF é invalido</span>
+          </div>
+          <br>
+
+            <div class="col-md-6 mb-3">
+              <label for="sexo" class="labelCampo">Sexo</label>
+              <select class="custom-select d-block w-100" id="sexo" required="" name="sexo" th:value="${pessoa.sexo}">
+                <option>Masculino</option>
+                <option>Femenino</option>
+              </select>
+            </div>
+            
+         
+
+         <h2><p class="mb-3 labelCampo">Modulo</p></h2>
+
+          <div class="d-block my-3">
+            <div class="custom-control custom-radio">
+              <input id="primeiro" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="" th:selected="${aluno.modulo =='Primeiro'}" value="primeiro" name="modulo">
+              <label class="custom-control-label" for="primeiro" th:selected="${aluno.modulo=='Primeiro'}">Primeiro</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input id="segundo" name="paymentMethod" type="radio" class="custom-control-input" required=""  th:selected="${aluno.modulo =='Segundo'}" value="segundo" name="modulo">
+              <label class="custom-control-label" for="segundo" th:selected="${aluno.modulo=='Segundo'}">Segundo</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input id="terceiro" name="paymentMethod" type="radio" class="custom-control-input" required="" th:selected="${aluno.modulo == 'Terceiro'}" value="terceiro" name="modulo">
+              <label class="custom-control-label" for="terceiro"  th:selected="${aluno.modulo=='Terceiro'}">Terceiro</label>
+            </div>
+          </div>
+
+          <p class="mb-3 labelCampo"><h2>Areas de atuações preferidas</h2>  <span class="msg_erro msg_areas" style="display: none">O Campo areas de atuações preferidas é Obrigatorio</span></p>
+          
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="programacao" name="areasPreferidas">
+            <label class="custom-control-label" for="programacao" th:selected="${aluno.areasPreferidas != null ? #arrays.contains(aluno.areasPreferidas, 'Programação') : false}">Programação</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="redes" name="areasPreferidas">
+            <label class="custom-control-label" for="redes" th:selected="${aluno.areasPreferidas != null ? #arrays.contains(aluno.areasPreferidas, 'Redes de Computadores') : false}">Redes de computadores</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="manutencao" name="areasPreferidas">
+            <label class="custom-control-label" for="manutencao" th:selected="${aluno.areasPreferidas != null ? #arrays.contains(aluno.areasPreferidas, 'Manutenção de computadores') : false}">Manutenção de computadores</label>
+          </div>
+          
+          <br>
+          
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="senha" class="labelCampo">Senha</label>
+            <input type="password" class="form-control" id="senha" placeholder="" required="" name="senha" th:value="${aluno.senha}">
+          </div>
+        </div>
+        <span class="msg_erro msg_senha" style="display: none">O Campo senha é Obrigatorio</span>
+        <span class="msg_erro msg_senhaInvalida" style="display: none"> As senhas não são iguais</span>
+
+         <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="confSenha" class="labelCampo">Confirma senha</label>
+            <input type="password" class="form-control" id="confSenha" placeholder="" required="" name="senha" th:value="${aluno.senha}">
+          </div>
+        </div>
+          <span class="msg_erro msg_confSenha" style="display: none">O Campo confirmar senha éx Obrigatorio</span>
+
+        
+        <hr class="mb-4">
+        <div class="row">
+          <button class="btn btn-primary col-md-3 mb-3" onclick="validar()" type="submit" id="validar">VALIDAR</button>
+          <button class="btn btn-danger col-md-3 mb-3" type="reset" id="linpar">LIMPAR</button>
+        </div>
+      </form>
+      <p th:text="${mensagem}"></p>
+  </container>
+      </div>
+    </div>
+  </div>
+  <script src="bootstrapFiles/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+  <script src="bootstrapFiles/bootstrap.bundle.min.js"
+    integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
+    crossorigin="anonymous"></script>
+  <script>
+    function validar() {
+      var validar = 0;
+    
+      var nome = document.getElementById("nome");
+      var spanNome = document.querySelector(".msg_nome");
+      var spanNomeInvalido = document.querySelector(".msg_nome_invalido");
+     
+
+      if (nome.value == "") {
+        spanNome.style.display = "inline-block";
+        spanNomeInvalido.style.display = "none";
+      }
+      else{
+        spanNome.style.display = "none";
+        validar++;
+        if(nome.value.length < 4){
+          spanNomeInvalido.style.display = "inline-block";
+        }
+        else{
+          validar++;
+          spanNomeInvalido.style.display = "none";
+        }
+      }
+
+      var email = document.getElementById("email");
+      var spanEmail = document.querySelector(".msg_email")
+      var spanEmailInvalido = document.querySelector(".msg_email_invalido")
+
+      if(email.value == ""){
+        spanEmail.style.display = "inline-block";
+        spanEmailInvalido.style.display = "none";
+      }
+      else{
+        spanEmail.style.display = "none";
+        validar++;
+        if(email.value.indexOf('@') == -1 || email.value.indexOf('.') == -1){
+          spanEmailInvalido.style.display = "inline-block";
+        }
+        else{
+          spanEmailInvalido.style.display = "none";
+          validar++;
+        }
+      } 
+
+      var cpf = document.getElementById("cpf");
+      var spanCpf = document.querySelector(".msg_cpf")
+      var spanCpfInvalido = document.querySelector(".msg_cpf_invalido")
+
+      if(cpf.value == ""){
+        spanCpf.style.display = "inline-block";
+        spanCpfInvalido.style.display = "none";
+      }
+      else{
+        spanCpf.style.display = "none";
+        validar++;
+        if( cpf.value.length < 11){
+          spanCpfInvalido.style.display = "inline-block";
+        }
+        else{
+          spanCpfInvalido.style.display = "none";
+          validar++;
+        }
+      }
+      
+      var checkbox = document.getElementsByName("areasCheck");
+      var spanCheckbox = document.querySelector(".msg_areas");
+      var checkboxCheck = false;
+    for(var i = 0; i < checkbox.length; i++){
+     if(checkbox[i].checked == true){
+       checkboxCheck = true;
+     }
+      }
+     if(checkboxCheck){
+       spanCheckbox.style.display = "none";
+       validar++;
+      }
+      else{
+        spanCheckbox.style.display = "inline-block";
+      }
+      
+      var senha = document.getElementById("senha");
+      var spanSenha = document.querySelector(".msg_senha");
+      var confSenha = document.getElementById("confSenha");
+      var spanConfSenha = document.querySelector(".msg_confSenha");
+      var spanSenhaInvalida = document.querySelector(".msg_senhaInvalida");
+      
+      if(senha.value == ""){
+        spanSenha.style.display = "inline-block";
+      }
+     else{
+      spanSenha.style.display = "none";
+      validar++;
+         if(confSenha.value == ""){
+          spanConfSenha.style.display = "inline-block";
+          }else{
+            spanConfSenha.style.display = "none";
+            validar++;
+            if(senha.value != confSenha.value){
+              console.log(senha.value);
+              console.log(confSenha.value);
+              spanSenhaInvalida.style.display = "inline-block";
+            }else{
+              spanSenhaInvalida.style.display = "none";
+              validar++;
+            }
+          }
+      } 
+      
+     if(valided == 10){
+    alert("Cadastro concluido!");
+     }
+      
+    }
+  </script>
+</body>
+
+</html>
