@@ -6,29 +6,44 @@ import javax.persistence.Entity;
 public class Aluno extends Pessoa {
 
 	private String email;
-	private String modulo;
-	private String[] areasPreferidas;
+	protected String modulo;
+	protected String[] areasPreferidas;
 	private String senha;
 	private String confirmacao;
 
-	public Aluno(){
+	public Aluno() {
 
 	}
 
-	public Aluno(String cpf, Long id){
-		super(cpf, id);
+	public Aluno(String cpf, Long id, String sexo, String idade) {
+		super(cpf, id, sexo, idade);
 	}
-	
-	public Aluno(String cpf, Long id, String email){
-		super(cpf, id);
+
+	public Aluno(String cpf, Long id, String email, String sexo, String idade) {
+		super(cpf, id, sexo, idade);
 		this.email = email;
 	}
 
 	@Override
-	public String getNome(){
-		return getNome();
+	public Long getId(){
+		return super.getId();
 	}
 
+	@Override
+	public String getNome() {
+		return super.getNome();
+	}
+
+	@Override
+	public String getSexo(){
+		return super.getSexo();
+	}
+
+	@Override
+	public String getIdade(){
+		return super.getIdade();
+	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -86,4 +101,4 @@ public class Aluno extends Pessoa {
 		return getTodosCampos();
 	}
 
-}
+}	

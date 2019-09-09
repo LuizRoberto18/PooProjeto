@@ -57,34 +57,7 @@
 </head>
 
 <body class="bg-light">
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
-        <a class="navbar-brand" href="#" style="color: white">Campus IFAL-Rio Largo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/" style="color: white">Home <span class="sr-only">(current)</span></a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="form"style="color: white">Formulario <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0" method="POST" action="/procurarAluno">
-                <input class="form-control mr-sm-2" type="search" placeholder="Procurar" name="nome" id="nome"
-                    aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-            </form>
-        </div>
-    </nav>
-</div>
-
-
+  
   <div class="container">
     <div class="py-5 text-center">
       <h1 class="lead">Formulario de Cadastro</h1>
@@ -94,11 +67,11 @@
       <div class="col-md-12 order-md-1">
       <container class="container">
         <form method="POST" action="/novo_cadastro">
-            <input type="number" name="id" id="id" th:value="${pessoa.id}" style="display: none">
+            <input type="number" name="id" id="id" th:value="${aluno.id}" style="display: none">
           <div class="row">
             <div class="col-md-12 mb-3">
               <label for="name" class="CampoLabel">Nome</label>
-              <input type="text" class="form-control" id="nome" placeholder="Ex. Jose Maria da Silva" name="pessoa.nome" th:value="${pessoa.nome}" style="text-transform:uppercase">
+              <input type="text" class="form-control" id="nome" placeholder="Ex. Jose Maria da Silva" name="nome" th:value="${aluno.nome}" style="text-transform:uppercase">
             </div>
               <span class="msg_erro msg_nome" style="display: none"> O Campo nome é Obrigatorio</span>
               <span class="msg_erro msg_nome_invalido" style="display: none"> este Nome é invalido</span>
@@ -118,7 +91,7 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="cpf" class="CampoLabel">CPF</label>
-              <input type="text" class="form-control" id="cpf" placeholder="" required="" name="cpf" th:value="${pessoa.cpf}">
+              <input type="text" class="form-control" id="cpf" placeholder="" required="" name="cpf" th:value="${aluno.cpf}">
             </div>
               <span class="msg_erro msg_cpf" style="display: none"> O Campo CPF Obrigatorio</span>
               <span class="msg_erro msg_cpf_invalido" style="display: none">este CPF é invalido</span>
@@ -127,7 +100,7 @@
 
             <div class="col-md-6 mb-3">
               <label for="sexo" class="labelCampo">Sexo</label>
-              <select class="custom-select d-block w-100" id="sexo" required="" name="sexo" th:value="${pessoa.sexo}">
+              <select class="custom-select d-block w-100" id="sexo" required="" name="sexo" th:value="${aluno.sexo}">
                 <option>Masculino</option>
                 <option>Femenino</option>
               </select>
@@ -139,18 +112,18 @@
 
           <div class="d-block my-3">
             <div class="custom-control custom-radio">
-              <input id="primeiro" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="" th:selected="${aluno.modulo =='Primeiro'}" value="primeiro" name="modulo">
-              <label class="custom-control-label" for="primeiro" th:selected="${aluno.modulo=='Primeiro'}">Primeiro</label>
+              <input id="primeiro" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="" th:selected="${aluno.modulo =='Primeiro'}" value="primeiro" >
+              <label class="custom-control-label" for="primeiro">Primeiro</label>
             </div>
 
             <div class="custom-control custom-radio">
-              <input id="segundo" name="paymentMethod" type="radio" class="custom-control-input" required=""  th:selected="${aluno.modulo =='Segundo'}" value="segundo" name="modulo">
-              <label class="custom-control-label" for="segundo" th:selected="${aluno.modulo=='Segundo'}">Segundo</label>
+              <input id="segundo" name="paymentMethod" type="radio" class="custom-control-input" required=""  th:selected="${aluno.modulo =='Segundo'}" value="segundo">
+              <label class="custom-control-label" for="segundo" >Segundo</label>
             </div>
 
             <div class="custom-control custom-radio">
-              <input id="terceiro" name="paymentMethod" type="radio" class="custom-control-input" required="" th:selected="${aluno.modulo == 'Terceiro'}" value="terceiro" name="modulo">
-              <label class="custom-control-label" for="terceiro"  th:selected="${aluno.modulo=='Terceiro'}">Terceiro</label>
+              <input id="terceiro" name="paymentMethod" type="radio" class="custom-control-input" required="" th:selected="${aluno.modulo == 'Terceiro'}" value="terceiro">
+              <label class="custom-control-label" for="terceiro" >Terceiro</label>
             </div>
           </div>
 
@@ -174,7 +147,7 @@
           
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="senha" class="labelCampo">Senha</label>
+            <label for="senha" class="labelCampo">Senha                                           </label>
             <input type="password" class="form-control" id="senha" placeholder="" required="" name="senha" th:value="${aluno.senha}">
           </div>
         </div>
@@ -183,7 +156,7 @@
 
          <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="confSenha" class="labelCampo">Confirma senha</label>
+            <label for="confSenha" class="labelCampo">Confirma</label>
             <input type="password" class="form-control" id="confSenha" placeholder="" required="" name="senha" th:value="${aluno.senha}">
           </div>
         </div>

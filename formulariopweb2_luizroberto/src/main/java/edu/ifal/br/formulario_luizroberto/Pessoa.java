@@ -19,16 +19,27 @@ public class Pessoa {
 	public Pessoa(){
 		super();
 	}
-	public Pessoa(String cpf, Long id){
+	public Pessoa(String cpf, Long id, String sexo, String idade){
 		super();
 		this.cpf = cpf;
 		this.id = id;
+		this.sexo = sexo;
+		this.idade = idade;
 	}
 
-	public String getEmail(){
-		return getEmail();
+	public String getModulu(){
+		return getModulu();
 	}
-	
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -60,13 +71,4 @@ public class Pessoa {
 	public void setIdade(String idade) {
 		this.idade = idade;
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 }

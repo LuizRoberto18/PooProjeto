@@ -1,5 +1,5 @@
 
-INSERT INTO PESSOA(ID,EMAIL, NOME,CPF, SEXO, IDADE, DTYPE) VALUES(25,'bruno@gmail.com','Bruno','02953974534', 'Masculino','19', 'Aluno')
-INSERT INTO PESSOA(ID, EMAIL, NOME, CPF, SEXO, IDADE, DTYPE) VALUES( 243,'joao@gmail.com','João','10548974986', 'Masculino', '30', 'Aluno')
-INSERT INTO PESSOA( ID, EMAIL, NOME, CPF, SEXO ,IDADE, DTYPE) VALUES( 945,'Maria','maria@gmail.com', '11981748974', 'Feminino', '32', 'Aluno')
-
+INSERT INTO PESSOA(ID,EMAIL, NOME,CPF, SEXO, IDADE,SENHA, MODULO, DTYPE) VALUES(25,'bruno@gmail.com','Bruno','02953974534', 'Masculino','19','1234567', '2', 'Aluno')
+INSERT INTO PESSOA(ID, EMAIL, NOME, CPF, SEXO, IDADE,SENHA, MODULO, DTYPE)  VALUES( 243,'joao@gmail.com','João','10548974986','Masculino','30',' 987654', '3', 'Aluno')
+INSERT INTO PESSOA( ID, EMAIL, NOME, CPF, SEXO ,IDADE,SENHA, MODULO, DTYPE)  VALUES( 945,'maria@gmail.com','Maria', '11981748974', 'Feminino', '32','654321','1' ,  'Aluno')
+INSERT INTO PESSOA(ID, EMAIL, NOME, CPF, SEXO, IDADE,SENHA, MODULO, DTYPE)  VALUES( 134,'anajulia@gmail.com','Ana Julia','14548974986','Feminino','30',' 987654', '3', 'Aluno')
