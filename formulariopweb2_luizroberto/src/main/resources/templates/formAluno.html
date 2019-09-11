@@ -27,10 +27,17 @@
   h1 {
     text-align: center;
     background-color: darkgrey;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
 
   h2 {
     text-align: center;
+  }
+  body{
+    background-color: darkgrey;
+  }
+  form{
+    background-color: white;
   }
 </style>
 
@@ -41,7 +48,7 @@
     <input type="number" name="id" id="id" th:value="${aluno.id}" style="display: none">
     <!-- DADOS PESSOAIS-->
     <fieldset>
-      <legend>Dados Pessoais</legend>
+      <legend style="padding-left: 1.8em">Dados Pessoais</legend>
       <table cellspacing="10">
         <tr>
           <td>
@@ -53,24 +60,7 @@
           </td>
           <span class="msg_erro msg_nome" style="display: none"> O Campo nome é Obrigatorio</span>
           <span class="msg_erro msg_nome_invalido" style="display: none"> este Nome é invalido</span>
-
-        <tr>
           <br>
-          <td>
-            <label>Data Nasci. </label>
-          </td>
-          <td align="left">
-            <input type="text" name="dia" size="2" maxlength="2" value="dd">
-            <input type="text" name="mes" size="2" maxlength="2" value="mm">
-            <input type="text" name="ano" size="4" maxlength="4" value="aaaa">
-          </td>
-        </tr>
-        <span class="msg_erro msg_nome" style="display: none"> O Campo Data Nasci. é Obrigatorio</span>
-        <span class="msg_erro msg_nome_invalido" style="display: none"> este Data Nasci. é invalido</span>
-
-        <tr>
-          <td>
-
         <tr>
           <td>
             <label>CPF</label>
@@ -103,7 +93,7 @@
 
     <!-- DADOS DE LOGIN -->
     <fieldset>
-      <legend>Dados de login</legend>
+      <legend style="padding-left: 1.8em">Dados de login</legend>
       <table cellspacing="10">
         <tr>
           <td>
@@ -131,7 +121,7 @@
             <label for="passconfirm">Confirme senha </label>
           </td>
           <td align="left">
-            <input type="password" name="confirmacao" type="password" class="form-control" id="confirmacao" placeholder="" required="" th:value="${aluno.confirmacao}" >
+            <input type="password" name="confirmacao"  class="form-control" id="confirmacao" placeholder="" required="" th:value="${aluno.confirmacao}" >
           </td>
           <span class="msg_erro msg_nome" style="display: none"> O Campo Confirmar Senha é Obrigatorio</span>
           <span class="msg_erro msg_nome_invalido" style="display: none"> esta Confirmação da Senha é invalido</span>  
@@ -141,7 +131,7 @@
     <br>
     <!-- ENDEREÇO -->
     <fieldset>
-      <legend>Dados do Curso</legend>
+      <legend style="padding-left: 1.8em">Dados do Curso</legend>
       <table cellspacing="10">
         <BR>
         <label>MODULO</label>
@@ -191,11 +181,11 @@
         </div>
       </table>
     </fieldset>
-
-    <br />
+    <br>
+    <br/>
     <div class="row">
-        <button class="btn btn-primary col-md-3 mb-3" onclick="validar()" type="submit" id="validar" style="margin-left: 530px">VALIDAR</button>
-        <button class="btn btn-danger col-md-3 mb-3" type="reset" id="linpar">LIMPAR</button>
+        <button class="btn btn-primary col-md-3 mb-3" onclick="validar()" type="submit" id="validar" style="margin-left: 46%" >VALIDAR</button>
+        <button class="btn btn-danger col-md-3 mb-3" type="reset" id="linpar" >LIMPAR</button>
       </div>
   </form>
 
