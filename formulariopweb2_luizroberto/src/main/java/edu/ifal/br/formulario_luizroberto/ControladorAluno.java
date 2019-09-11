@@ -23,9 +23,9 @@ public class ControladorAluno{
 		return  new ModelAndView("index.html");    
 	}
 
-	@RequestMapping("/form")
+	@RequestMapping("/formAluno")
 	public ModelAndView formulario(Aluno a){
-		ModelAndView retorno = new ModelAndView("form.html");
+		ModelAndView retorno = new ModelAndView("formAluno.html");
 		retorno.addObject("aluno", a);
 		return retorno;
 	}
@@ -64,7 +64,7 @@ public class ControladorAluno{
 	@RequestMapping("/atualizar_aluno/{idAluno}")
 	public ModelAndView atualizar(@PathVariable("idAluno") Long alunoID){
 		Optional<Aluno> opcao = repo.findById(alunoID);
-		ModelAndView retorno = new ModelAndView("form.html");
+		ModelAndView retorno = new ModelAndView("formAluno.html");
 		if(opcao.isPresent()){
 			Aluno a = opcao.get();
 			retorno.addObject("aluno", a);
