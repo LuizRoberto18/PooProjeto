@@ -27,8 +27,8 @@ public class Pessoa {
 		this.idade = idade;
 	}
 
-	public String getModulu(){
-		return getModulu();
+	public String getModulo(){
+		return getModulo();
 	}
 
 
